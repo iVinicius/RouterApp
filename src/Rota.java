@@ -3,9 +3,9 @@ public class Rota {
 
 	private String ipOrigem;
 	private String ipDestino;
-	private String metrica;
+	private int metrica;
 	
-	public Rota(String ipOrigem, String ipDestino, String metrica) {
+	public Rota(String ipOrigem, String ipDestino, int metrica) {
 		this.ipOrigem = ipOrigem;
 		this.ipDestino = ipDestino;
 		this.metrica = metrica;
@@ -27,11 +27,11 @@ public class Rota {
 		this.ipDestino = ipDestino;
 	}
 
-	public String getMetrica() {
+	public int getMetrica() {
 		return metrica;
 	}
 
-	public void setMetrica(String metrica) {
+	public void setMetrica(int metrica) {
 		this.metrica = metrica;
 	}
 
