@@ -1,22 +1,22 @@
 
 public class Rota {
 
-	private String ipOrigem;
+	private String ipSaida;
 	private String ipDestino;
 	private int metrica;
 	
 	public Rota(String ipOrigem, String ipDestino, int metrica) {
-		this.ipOrigem = ipOrigem;
+		this.ipSaida = ipOrigem;
 		this.ipDestino = ipDestino;
 		this.metrica = metrica;
 	}
 
 	public String getIpOrigem() {
-		return ipOrigem;
+		return ipSaida;
 	}
 
 	public void setIpOrigem(String ipOrigem) {
-		this.ipOrigem = ipOrigem;
+		this.ipSaida = ipOrigem;
 	}
 
 	public String getIpDestino() {
@@ -37,7 +37,7 @@ public class Rota {
 
 	@Override
 	public String toString() {
-		return "Rota [ipOrigem=" + ipOrigem + ", ipDestino=" + ipDestino + ", metrica=" + metrica + "]";
+		return "Rota [ipOrigem=" + ipSaida + ", ipDestino=" + ipDestino + ", metrica=" + metrica + "]";
 	}
 	
 }

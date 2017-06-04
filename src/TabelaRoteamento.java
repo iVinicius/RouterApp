@@ -36,8 +36,21 @@ public class TabelaRoteamento {
 
     public void update_tabela(String tabela_s, InetAddress IPAddress) {
         /* Atualize a tabela de rotamento a partir da string recebida. */
-    	for(Rota r : tabela){
-    		
+    	ArrayList<Rota> sharedRoutes = this.parseEndereco(tabela_s, IPAddress);
+    	for(Rota r : sharedRoutes){
+    		Rota findResult = this.findEndereco(r.getIpDestino());
+    		// achou
+    		if(findResult != null){
+    			if(findResult.getMetrica() < r.getMetrica()){
+    				findResult.setIpOrigem(IPAddress.getAddress().toString());
+    				findResult.setMetrica(r.getMetrica() + 1);
+    			}
+    		}
+    		//nao achou
+    		else{
+    			r.setMetrica(r.getMetrica() + 1);
+    			tabela.add(r);
+    		}
     	}
     	
     	
@@ -56,17 +69,31 @@ public class TabelaRoteamento {
         
     }
     
-    public ArrayList<Rota> parseEndereco(String in){
+    public ArrayList<Rota> parseEndereco(String in, InetAddress IPAddress){
+    	ArrayList<Rota> result = new ArrayList<>();
     	
+    	String[] routes = in.split("*");
+    	String add;
+    	String metrica;
+    	String[] rota;
+    	Rota obj;
+    	for(int i = 0; i < routes.length; i++){
+    		rota = routes[i].split(";");
+    		add = rota[0];
+    		metrica = rota[1];
+    		obj = new Rota(IPAddress.getAddress().toString(), add, Integer.parseInt(metrica));
+    		result.add(obj);
+    	}
+    	return result;
     }
     
-    public int findEndereco(String endereco){
-    	for(int i = 0; i < tabela.size(); i++){
-    		if(tabela.get(i).getIpDestino().equals(endereco)){
-    			return i;
+    public Rota findEndereco(String endereco){
+    	for(Rota r : tabela){
+    		if(r.getIpDestino().equalsIgnoreCase(endereco)){
+    			return r;
     		}
     	}
-    	return -1;
+    	return null;
     }
 
 }
