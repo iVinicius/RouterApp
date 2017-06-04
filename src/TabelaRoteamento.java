@@ -7,8 +7,7 @@ import java.util.ArrayList;
 
 public class TabelaRoteamento {
 
-    private ArrayList<String[]> tabela;
-    private String[] dados;
+    private ArrayList<Rota> tabela;
 
     public TabelaRoteamento() throws FileNotFoundException, IOException {
         importarTabela();
@@ -17,6 +16,7 @@ public class TabelaRoteamento {
     
     private void importarTabela() throws IOException{
         tabela = new ArrayList<>();
+        String[] dados = null;
         try {
             FileReader fr = new FileReader("tabela.csv");
             BufferedReader br = new BufferedReader(fr);
