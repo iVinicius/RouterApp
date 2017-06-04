@@ -8,15 +8,16 @@ import java.util.ArrayList;
 public class TabelaRoteamento {
 
     private ArrayList<Rota> tabela;
+    
 
     public TabelaRoteamento() throws FileNotFoundException, IOException {
-    	importarEnderecos();
+    	importarEnderecos("IPVizinhos.txt");
     }
     
-    private void importarEnderecos() throws IOException{
+    private void importarEnderecos(String caminho) throws IOException{
         tabela = new ArrayList<>();
         try {
-            FileReader fr = new FileReader("IPVizinhos.txt");
+            FileReader fr = new FileReader(caminho);
             BufferedReader br = new BufferedReader(fr);
             String stringRead = br.readLine();
             while (stringRead != null) {
@@ -41,19 +42,12 @@ public class TabelaRoteamento {
     }
 
     public String get_tabela_string() {
-        String tabela_string = "";
-        
+        String tabela_string = "!";
         /* Tabela de roteamento vazia conforme especificado no protocolo */
-        if(tabela.isEmpty()){
-            return "!";
-        }
-        /* Converta a tabela de rotamento para string, conforme formato definido no protocolo . */
-        String[] aux;
-        for(int i = 0; i < tabela.size(); i++){
-            aux = tabela.get(i)[0].split(";");
-            tabela_string += "*" + aux[0] + ";" + aux[1];
-        }
         return tabela_string;
+        
+        /* Converta a tabela de rotamento para string, conforme formato definido no protocolo . */
+       
     }
 
 }

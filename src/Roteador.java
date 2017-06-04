@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 public class Roteador {
 
     public static void main(String[] args) throws IOException {
-        /* Lista de endere√ßo IPs dos vizinhos */
+        /* Lista de endereÁos IPs dos vizinhos */
         ArrayList<String> ip_list = new ArrayList<>();
 
         /* Le arquivo de entrada com lista de IPs dos roteadores vizinhos. */
@@ -25,7 +25,7 @@ public class Roteador {
             return;
         }
         
-        /* Cria inst√¢ncias da tabela de roteamento e das threads de envio e recebimento de mensagens. */
+        /* Cria inst‚ncias da tabela de roteamento e das threads de envio e recebimento de mensagens. */
         TabelaRoteamento tabela = new TabelaRoteamento();
         Thread sender = new Thread(new MessageReceiver(tabela));
         Thread receiver = new Thread(new MessageSender(tabela, ip_list));

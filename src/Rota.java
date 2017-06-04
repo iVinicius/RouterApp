@@ -40,5 +40,4 @@ public class Rota {
 		return "Rota [ipOrigem=" + ipOrigem + ", ipDestino=" + ipDestino + ", metrica=" + metrica + "]";
 	}
 	
-	
 }
