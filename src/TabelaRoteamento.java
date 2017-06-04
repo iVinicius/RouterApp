@@ -36,7 +36,11 @@ public class TabelaRoteamento {
 
     public void update_tabela(String tabela_s, InetAddress IPAddress) {
         /* Atualize a tabela de rotamento a partir da string recebida. */
-
+    	for(Rota r : tabela){
+    		
+    	}
+    	
+    	
         System.out.println(IPAddress.getHostAddress() + ": " + tabela_s);
 
     }
@@ -47,7 +51,22 @@ public class TabelaRoteamento {
         return tabela_string;
         
         /* Converta a tabela de rotamento para string, conforme formato definido no protocolo . */
-       
+        
+        
+        
+    }
+    
+    public ArrayList<Rota> parseEndereco(String in){
+    	
+    }
+    
+    public int findEndereco(String endereco){
+    	for(int i = 0; i < tabela.size(); i++){
+    		if(tabela.get(i).getIpDestino().equals(endereco)){
+    			return i;
+    		}
+    	}
+    	return -1;
     }
 
 }
