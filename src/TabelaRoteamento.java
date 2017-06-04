@@ -10,21 +10,22 @@ public class TabelaRoteamento {
     private ArrayList<Rota> tabela;
 
     public TabelaRoteamento() throws FileNotFoundException, IOException {
-        importarTabela();
-        tabela.remove(0);
+    	importarEnderecos();
     }
     
-    private void importarTabela() throws IOException{
+    private void importarEnderecos() throws IOException{
         tabela = new ArrayList<>();
-        String[] dados = null;
         try {
-            FileReader fr = new FileReader("tabela.csv");
+            FileReader fr = new FileReader("IPVizinhos.txt");
             BufferedReader br = new BufferedReader(fr);
             String stringRead = br.readLine();
             while (stringRead != null) {
-                dados = stringRead.split(" ");
-                tabela.add(dados);
-                // prÃ³xima linha
+            	String ipOrigem = "*";
+            	String ipDestino = stringRead;
+            	int metrica = 1;
+            	Rota rota = new Rota(ipOrigem, ipDestino, metrica);
+            	tabela.add(rota);
+                // próxima linha
                 stringRead = br.readLine();
             }
         } catch (FileNotFoundException ex) {
