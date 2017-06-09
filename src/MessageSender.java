@@ -32,7 +32,12 @@ public class MessageSender implements Runnable{
         }
         
         while(true){
-            
+            try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             /* Pega a tabela de roteamento no formato string, conforme especificado pelo protocolo. */
             String tabela_string = tabela.get_tabela_string();
                

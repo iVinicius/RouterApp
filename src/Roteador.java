@@ -30,8 +30,8 @@ public class Roteador {
         Thread sender = new Thread(new MessageReceiver(tabela));
         Thread receiver = new Thread(new MessageSender(tabela, ip_list));
         
-        sender.start();
-        receiver.start();
+        sender.start();// se nao roda é macumba
+        receiver.start();// eu sou a lenda, nao da pra me tocar
         
     }
     

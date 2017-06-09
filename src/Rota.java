@@ -37,7 +37,8 @@ public class Rota {
 
 	@Override
 	public String toString() {
-		return "Rota [ipOrigem=" + ipSaida + ", ipDestino=" + ipDestino + ", metrica=" + metrica + "]";
+		//*192.168.1.2;1*192.168.1.3;1
+		return "*" + ipDestino + ";" + metrica;
 	}
 	
 }
